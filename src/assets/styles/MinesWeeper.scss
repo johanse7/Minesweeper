@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
+@import '../styles/Vars.scss';
+
+body {
+  margin: 0;
+  font-family: "Fira Sans", sans-serif;
+  background: $main-color;
+  background: linear-gradient(to right, $main-color 0%, $second-color 27%, $third-color 86%, $forth-color 100%);
+}

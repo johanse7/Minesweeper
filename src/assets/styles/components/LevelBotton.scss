@@ -1,0 +1,53 @@
+@import "../Vars.scss";
+
+.level-button {
+  background: linear-gradient(to right, $fiveth-color 0%, #ff920a 100%);
+  text-align: center;
+  font-size: $forth-font-size;
+  height: 70px;
+  width: 250px;
+  line-height: 60px;
+  border-radius: 5px;
+  color: $white-color;
+  font-weight: 700;
+  transition: all 0.5s;
+  margin-top: 10px;
+  &:hover {
+    background: linear-gradient(to right, $fiveth-color 0%, #ff500a 100%);
+    box-shadow: 5px 5px 5px;
+    & span {
+      padding-right: 25px;
+      &::after {
+        opacity: 1;
+        right: 0;
+      }
+    }
+  }
+  & span {
+    position: relative;
+    transition: 0.5s;
+    cursor: pointer;
+    display: inline-block;
+    &::after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    
+  }
+}
+
+.level-button-active{
+  background: linear-gradient(to right, $fiveth-color 0%, #ff500a 100%);
+  box-shadow: 5px 5px 10px;
+  & span {
+    padding-right: 25px;
+    &::after {
+      opacity: 1;
+      right: 0;
+    }
+  }
+}
