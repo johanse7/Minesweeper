@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { setLevelSelected } from '../actions/index';
 import LevelButton from '../components/LevelButton';
-import gameLevels from '../config';
 
 const GameStatus = (props) => {
 
+  const { gameLevels, setLevelSelected } = props;
   const [gameStatus, gameSetStatus] = useState({
-    gameLevels: [],
+    selectedLevel: null,
   });
 
   useEffect(() => {
     gameSetStatus({
-      gameLevels,
       selectedLevel: 1,
     });
   }, []);
 
   const isActive = (id) => {
-    debugger
     return gameStatus.selectedLevel === id;
   };
   //events
@@ -25,12 +25,13 @@ const GameStatus = (props) => {
       ...gameStatus,
       selectedLevel: id,
     });
+    setLevelSelected(id);
   };
 
   return (
     <>
       {
-        gameStatus.gameLevels.map((item) => (
+        gameLevels.map((item) => (
           <LevelButton
             key={`level${item.id}`}
             onActiveLevel={() => handleClickActiveLevel(item.id)}
@@ -43,4 +44,12 @@ const GameStatus = (props) => {
   );
 };
 
-export default GameStatus;
+const mapStateToProps = ({ gameLevels }) => ({
+  gameLevels,
+});
+
+const mapDispatchToProps = {
+  setLevelSelected,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameStatus);
