@@ -1,0 +1,8 @@
+@import "../Vars.scss";
+
+.cell-content {
+  background-color: $darkslategray;
+  & img {
+    padding: 2px;
+  }
+}

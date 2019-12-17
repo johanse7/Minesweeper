@@ -1,10 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import GameStatus from './GameStatus';
+import LevelGame from '../components/LevelGame';
+import Logo from '../assets/static/Logo.png';
 import '../assets/styles/MinesWeeper.scss';
 
-const Home = () => {
+const Home = (props) => {
+  const { gameLevels, levelSelected } = props;
   return (
-    <GameStatus />
+    <section className="content">
+      <img src={Logo} alt="buscaminas" />
+      <div className="content-game">
+        <div className="game-status-content">
+          <GameStatus gameLevels={gameLevels} levelSelected={levelSelected} />
+          <LevelGame levelSelected={levelSelected} />
+        </div>
+
+      </div>
+    </section>
   );
 };
-export default Home;
+
+const mapStateToProps = ({ gameLevels, levelSelected }) => ({
+  gameLevels,
+  levelSelected,
+});
+
+export default connect(mapStateToProps, null)(Home);
