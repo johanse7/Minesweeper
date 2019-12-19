@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import GameStatus from './GameStatus';
 import LevelGame from '../components/LevelGame';
+import Board from './Board';
 import Logo from '../assets/static/Logo.png';
 import '../assets/styles/MinesWeeper.scss';
 
@@ -14,6 +15,10 @@ const Home = (props) => {
         <div className="game-status-content">
           <GameStatus gameLevels={gameLevels} levelSelected={levelSelected} />
           <LevelGame levelSelected={levelSelected} />
+        </div>
+        <div className="board-content">
+          {levelSelected &&
+            <Board levelSelected={levelSelected} />}
         </div>
 
       </div>

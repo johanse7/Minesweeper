@@ -19,11 +19,16 @@ body {
 
 .content-game {
   display: flex;
- 
+  justify-content: space-evenly;
 }
 
 .game-status-content {
   display: flex;
   flex-direction: column;
-
 }
+
+.board-content {
+  margin: 15px auto;
+}
+
+

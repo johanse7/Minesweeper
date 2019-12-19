@@ -1,4 +1,4 @@
-const gameLevels = [
+export const gameLevels = [
   {
     id: 1,
     text: 'Facil',
@@ -6,8 +6,8 @@ const gameLevels = [
     width: 8,
     heigth: 8,
     flags: 10,
-    sizeX: 90,
-    sizeY: 90,
+    sizeX: 45,
+    sizeY: 45,
   },
   {
     id: 2,
@@ -16,8 +16,8 @@ const gameLevels = [
     width: 16,
     heigth: 16,
     flags: 40,
-    sizeX: 50,
-    sizeY: 50,
+    sizeX: 28,
+    sizeY: 28,
   },
   {
     id: 3,
@@ -26,9 +26,24 @@ const gameLevels = [
     width: 20,
     heigth: 20,
     flags: 99,
-    sizeX: 30,
-    sizeY: 30,
+    sizeX: 20,
+    sizeY: 20,
   },
 ];
 
-export default gameLevels;
+export const generateRandomNumber = (dimension) => (
+  Math.floor((Math.random() * 1000) + 1) % dimension
+);
+
+export const generateBoardMatrix = (width, heigth) => {
+  const board = new Array(heigth).fill(new Array(width).fill({}));
+  return board.map((heigth, i) => heigth.map((width, j) => ({
+    heigth: i,
+    width: j,
+    isMine: false,
+    mineNumber: 0,
+    isSelection: false,
+    isEmpty: false,
+    isFlag: true,
+  })));
+};

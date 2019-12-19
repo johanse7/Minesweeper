@@ -1,4 +1,4 @@
-import gameLevels from '../config';
+import { gameLevels } from '../config';
 
 const initialState = {
   gameLevels,

@@ -1,8 +1,19 @@
 @import "../Vars.scss";
 
 .cell-content {
-  background-color: $darkslategray;
-  & img {
-    padding: 2px;
+    background-color: $darkslategray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  margin: 2px;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+  color: $white-color;
+  &:hover {
+    background-color: $darkslategray-hover;
+  }
+    & img {
+    width: 80%;
   }
 }
