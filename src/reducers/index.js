@@ -11,6 +11,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         levelSelected: state.gameLevels.find((level) => level.id === action.payload),
       };
+    case 'SET_BOARD_GAME':
+      return {
+        ...state,
+        board: action.payload,
+      };
     default:
       return state;
   }

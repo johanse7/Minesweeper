@@ -12,6 +12,7 @@
   color: $white-color;
   &:hover {
     background-color: $darkslategray-hover;
+    cursor: pointer;
   }
     & img {
     width: 80%;

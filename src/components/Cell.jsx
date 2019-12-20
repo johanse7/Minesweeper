@@ -6,11 +6,11 @@ import '../assets/styles/components/Cell.scss';
 const Cell = (props) => {
 
   const getValue = ({ isMine, isFlag, mineNumber, isSelection }) => {
-    if (isMine) {
-      return <img src={boom} alt="mine" />;
-    }
     if (!isSelection) {
       return isFlag ? <img src={flag} alt="mine" /> : null;
+    }
+    if (isMine) {
+      return <img src={boom} alt="mine" />;
     }
     if (mineNumber === 0) {
       return null;
