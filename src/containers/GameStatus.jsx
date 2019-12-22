@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setLevelSelected } from '../actions/index';
+import { setLevelSelected, setBoadGame } from '../actions/index';
 import LevelButton from '../components/LevelButton';
 import LevelGame from '../components/LevelGame';
 
@@ -19,6 +19,7 @@ const GameStatus = (props) => {
   //events
   const handleClickActiveLevel = (id) => {
     setLevelSelected(id);
+    debugger
   };
 
   return (

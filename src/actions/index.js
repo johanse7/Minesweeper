@@ -6,3 +6,8 @@ export const setBoadGame = (payload) => ({
   type: 'SET_BOARD_GAME',
   payload,
 });
+
+export const updateNumberFalgs = (payload) => ({
+  type: 'UPDATE_NUMBER_FLAGS',
+  payload,
+});

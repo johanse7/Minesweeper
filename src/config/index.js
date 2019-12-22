@@ -117,7 +117,7 @@ export const generateBoardMatrix = (width, heigth, mines) => {
     y: j,
     isMine: false,
     mineNumber: 0,
-    isSelection: true,
+    isSelection: false,
     isFlag: false,
   })));
 

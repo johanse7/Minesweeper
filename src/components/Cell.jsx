@@ -19,7 +19,11 @@ const Cell = (props) => {
   };
 
   return (
-    <div className="cell-content" style={{ width: `${props.sizeX}px`, height: `${props.sizeY}px` }}>
+    <div
+      className="cell-content"
+      style={{ width: `${props.sizeX}px`, height: `${props.sizeY}px` }}
+      onContextMenu={props.handleMenu}
+    >
       {getValue(props)}
     </div>
   );
