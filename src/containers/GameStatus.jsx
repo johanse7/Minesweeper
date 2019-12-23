@@ -19,7 +19,10 @@ const GameStatus = (props) => {
   };
   //events
   const handleClickActiveLevel = (id) => {
-    setLevelSelected(id);
+    if (levelSelected.id !== id) {
+      setLevelSelected(id);
+    }
+
   };
 
   return (
