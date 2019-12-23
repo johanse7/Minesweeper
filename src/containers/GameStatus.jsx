@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setLevelSelected, setBoadGame } from '../actions/index';
 import LevelButton from '../components/LevelButton';
 import LevelGame from '../components/LevelGame';
+import Timer from '../components/Timer';
+import { setLevelSelected } from '../actions/index';
 
 const GameStatus = (props) => {
 
@@ -19,11 +20,11 @@ const GameStatus = (props) => {
   //events
   const handleClickActiveLevel = (id) => {
     setLevelSelected(id);
-    debugger
   };
 
   return (
     <>
+      <Timer />
       {levelSelected && (
         <>
           {gameLevels.map((item) => (

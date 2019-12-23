@@ -1,0 +1,13 @@
+@import '../Vars.scss';
+
+.content-timer {
+  display: flex;
+  & img {
+    margin: 0 10px;
+  }
+
+  & span {
+    font-size: $fiveth-font-size;
+    color: $white-color;
+  }
+}

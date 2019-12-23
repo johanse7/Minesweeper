@@ -10,7 +10,7 @@ body {
 
 .content {
   padding: 0 2rem 0 2rem;
-  & img {
+  & > img {
     display: block;
     margin-left: auto;
     margin-right: auto;
