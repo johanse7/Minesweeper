@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/johanse7/Minesweeper/issues"
   },
-  "homepage": "https://github.com/johanse7/Minesweeper#readme",
+  "homepage": "https://minesweepersebastian.000webhostapp.com",
   "dependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",

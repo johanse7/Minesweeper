@@ -18,9 +18,9 @@ const Home = (props) => {
   const handleClickNewGame = () => {
     const { heigth, width, mines, id } = levelSelected;
     const boardData = generateBoardMatrix(heigth, width, mines);
+    setLevelSelected(id);
     setBoadGame(boardData);
     setResetTimer(true);
-    setLevelSelected(id);
   };
   return (
     <>
