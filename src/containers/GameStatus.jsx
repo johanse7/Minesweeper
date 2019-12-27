@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import LevelButton from '../components/LevelButton';
 import LevelGame from '../components/LevelGame';
 import Timer from '../components/Timer';
-import { setLevelSelected } from '../actions/index';
+import { setLevelSelected, setResetTimer } from '../actions/index';
 
 const GameStatus = (props) => {
 
-  const { gameLevels, levelSelected, setLevelSelected } = props;
+  const { gameLevels, levelSelected, setLevelSelected, setResetTimer } = props;
 
   useEffect(() => {
     //InitSlected level 1 default
@@ -21,8 +21,8 @@ const GameStatus = (props) => {
   const handleClickActiveLevel = (id) => {
     if (levelSelected.id !== id) {
       setLevelSelected(id);
+      setResetTimer(true);
     }
-
   };
 
   return (
@@ -52,6 +52,7 @@ const mapStateToProps = ({ gameLevels, levelSelected }) => ({
 
 const mapDispatchToProps = {
   setLevelSelected,
+  setResetTimer,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameStatus);

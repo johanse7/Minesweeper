@@ -8,6 +8,26 @@ body {
   background: linear-gradient(to right, $main-color 0%, $second-color 27%, $third-color 86%, $forth-color 100%);
 }
 
+
+.btn-new-game {
+  background: linear-gradient(to right, $fiveth-color 0%, #ff920a 100%);
+  text-align: center;
+  font-size: $forth-font-size;
+  height: 70px;
+  width: 250px;
+  line-height: 60px;
+  border-radius: 5px;
+  color: $white-color;
+  font-weight: 700;
+  margin: 10px 15px;
+  float: right;
+  top: 20px;
+  &:hover {
+    background: linear-gradient(to right, $fiveth-color 0%, #ff500a 100%);
+    box-shadow: 5px 5px 5px;
+    cursor: pointer;
+  }
+}
 .content {
   padding: 0 2rem 0 2rem;
   & > img {

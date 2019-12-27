@@ -20,43 +20,46 @@ const addMinesToBoard = (boardInit, heigth, width, mines) => {
 
   return boardInit;
 };
-const getAroundCell = (postionHeigth, positionWidth, heigth, width, board) => {
+const getAroundCell = (x, y, height, width, board) => {
   const aroundValues = [];
-  // Up Position
-  if (positionWidth > 0) {
-    aroundValues.push(board[positionWidth - 1][postionHeigth]);
-  }
-  //position down
-  if (positionWidth < (heigth - 1)) {
-    aroundValues.push(board[positionWidth + 1][postionHeigth]);
+  //up
+  if (x > 0) {
+    aroundValues.push(board[x - 1][y]);
   }
 
-  //postition left
-  if (postionHeigth > 0) {
-    aroundValues.push(board[positionWidth][postionHeigth - 1]);
-  }
-  // postion right
-  if (postionHeigth < (width - 1)) {
-    aroundValues.push(board[positionWidth][postionHeigth + 1]);
-  }
-  // postion top left
-  if (positionWidth > 0 && postionHeigth > 0) {
-    aroundValues.push(board[positionWidth - 1][postionHeigth - 1]);
+  //down
+  if (x < height - 1) {
+    aroundValues.push(board[x + 1][y]);
   }
 
-  // postion top right
-  if (positionWidth > 0 && postionHeigth < (width - 1)) {
-    aroundValues.push(board[positionWidth - 1][postionHeigth + 1]);
+  //left
+  if (y > 0) {
+    aroundValues.push(board[x][y - 1]);
   }
 
-  //position bottom right
-  if (positionWidth < (heigth - 1) && postionHeigth < (width - 1)) {
-    aroundValues.push(board[positionWidth + 1][postionHeigth + 1]);
+  //right
+  if (y < width - 1) {
+    aroundValues.push(board[x][y + 1]);
   }
 
-  //postion bottom left
-  if (positionWidth < heigth - 1 && postionHeigth > 0) {
-    aroundValues.push(board[positionWidth + 1][postionHeigth - 1]);
+  // top left
+  if (x > 0 && y > 0) {
+    aroundValues.push(board[x - 1][y - 1]);
+  }
+
+  // top right
+  if (x > 0 && y < width - 1) {
+    aroundValues.push(board[x - 1][y + 1]);
+  }
+
+  // bottom right
+  if (x < height - 1 && y < width - 1) {
+    aroundValues.push(board[x + 1][y + 1]);
+  }
+
+  // bottom left
+  if (x < height - 1 && y > 0) {
+    aroundValues.push(board[x + 1][y - 1]);
   }
 
   return aroundValues;
@@ -67,12 +70,76 @@ const getNeighbours = (board, height, width) => {
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
       if (!board[i][j].isMine) {
-        const areaCell = getAroundCell(board[i][j].y, board[i][j].x, height, width, board);
+        const areaCell = getAroundCell(board[i][j].x, board[i][j].y, height, width, board);
         const mineNumber = areaCell.filter((area) => area.isMine).length;
         board[i][j].mineNumber = mineNumber;
       }
     };
   };
+  return board;
+};
+
+export const showBoarGameOver = (board) => {
+  const tempBoard = board;
+  board.forEach((row) => {
+    row.forEach((item) => {
+      item.isSelection = true;
+    });
+  });
+  return tempBoard;
+};
+
+export const getMines = (board) => {
+  const minesArray = [];
+  board.forEach((row) => {
+    row.forEach((item) => {
+      if (item.isMine) {
+        minesArray.push(item);
+      }
+    });
+  });
+
+  return minesArray;
+};
+
+export const getCellsIsNotSelected = (board) => {
+  const minesArray = [];
+  board.forEach((row) => {
+    row.forEach((item) => {
+      if (!item.isSelection) {
+        minesArray.push(item);
+      }
+    });
+  });
+
+  return minesArray;
+};
+
+export const getFlags = (board) => {
+  const flagsArray = [];
+  board.forEach((row) => {
+    row.forEach((item) => {
+      if (item.isFlag) {
+        flagsArray.push(item);
+      }
+    });
+  });
+
+  return flagsArray;
+};
+
+export const getEmptyCells = (x, y, heigth, width, board) => {
+  const area = getAroundCell(x, y, heigth, width, board);
+  area.forEach((item) => {
+
+    if (!item.isSelection && !item.isFlag && (item.mineNumber === 0 || !item.isMine)) {
+      board[x][y].isSelection = true;
+      if (item.mineNumber === 0) {
+        getEmptyCells(item.x, item.y, heigth, width, board);
+      }
+    }
+  });
+
   return board;
 };
 

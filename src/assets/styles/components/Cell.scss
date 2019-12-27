@@ -1,7 +1,7 @@
 @import "../Vars.scss";
 
 .cell-content {
-    background-color: $darkslategray;
+  background-color: $darkslategray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,22 @@
     background-color: $darkslategray-hover;
     cursor: pointer;
   }
-    & img {
+  & img {
     width: 80%;
   }
+}
+
+.cell-selected {
+  background: $seventh-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+  color: $white-color;
+  & img {
+    width: 80%;
+  }
+  pointer-events: none;
 }

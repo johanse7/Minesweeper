@@ -18,11 +18,13 @@ const Cell = (props) => {
     return mineNumber;
   };
 
+  const classCell = props.isSelection ? "cell-selected" : "cell-content";
   return (
     <div
-      className="cell-content"
+      className={classCell}
       style={{ width: `${props.sizeX}px`, height: `${props.sizeY}px` }}
       onContextMenu={props.handleMenu}
+      onClick={props.handleClickCell}
     >
       {getValue(props)}
     </div>
