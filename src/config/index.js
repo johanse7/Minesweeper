@@ -129,11 +129,11 @@ export const getFlags = (board) => {
 };
 
 export const getEmptyCells = (x, y, heigth, width, board) => {
-  const area = getAroundCell(x, y, heigth, width, board);
-  area.forEach((item) => {
+  const cells = getAroundCell(x, y, heigth, width, board);
+  cells.forEach((item) => {
 
     if (!item.isSelection && !item.isFlag && (item.mineNumber === 0 || !item.isMine)) {
-      board[x][y].isSelection = true;
+      board[item.x][item.y].isSelection = true;
       if (item.mineNumber === 0) {
         getEmptyCells(item.x, item.y, heigth, width, board);
       }
