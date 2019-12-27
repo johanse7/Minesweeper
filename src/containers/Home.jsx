@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setResultGame, setResetTimer, setBoadGame } from '../actions/index';
+import { setResultGame, setResetTimer, setBoadGame, setLevelSelected } from '../actions/index';
 import { generateBoardMatrix } from '../config/index';
 import GameStatus from './GameStatus';
 import Board from './Board';
@@ -9,17 +9,18 @@ import Logo from '../assets/static/Logo.png';
 import '../assets/styles/MinesWeeper.scss';
 
 const Home = (props) => {
-  const { setResultGame, resultGame, levelSelected, setResetTimer, setBoadGame } = props;
+  const { setResultGame, resultGame, levelSelected, setResetTimer, setBoadGame, setLevelSelected } = props;
 
   const unMountComponent = () => {
     setResultGame(null);
   };
 
   const handleClickNewGame = () => {
-    const { heigth, width, mines } = levelSelected;
+    const { heigth, width, mines, id } = levelSelected;
     const boardData = generateBoardMatrix(heigth, width, mines);
     setBoadGame(boardData);
     setResetTimer(true);
+    setLevelSelected(id);
   };
   return (
     <>
@@ -52,5 +53,6 @@ const mapDispatchToProps = {
   setResultGame,
   setResetTimer,
   setBoadGame,
+  setLevelSelected,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
